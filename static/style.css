@@ -1,1 +1,291 @@
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --text-color: #ffffff;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: transparent;
+    color: #333;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Static Background - Nice Dark Gradient */
+/* Static Background - Wooden Desk */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('background.jpg') no-repeat center center/cover;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    /* Bold */
+    margin-bottom: 10px;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* Distinct color requested */
+    color: #e62270;
+    /* Carrot Orange */
+}
+
+.subtitle {
+    font-weight: 300;
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    color: #0c33e1;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+input::placeholder {
+    color: #888;
+}
+
+select option {
+    background: #fff;
+    color: #333;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: var(--primary-color);
+    color: rgb(23, 228, 149);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: rgb(206, 10, 10);
+    margin-top: 20px;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Loader */
+.loader {
+    display: none;
+    border: 3px solid rgba(106, 17, 203, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid var(--primary-color);
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Result Section */
+.hidden {
+    display: none;
+}
+
+.result-container {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.score-circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+}
+
+svg {
+    width: 150px;
+    height: 150px;
+    transform: rotate(-90deg);
+}
+
+circle {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 10;
+}
+
+#progressCircle {
+    stroke: #00ff88;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 1.5s ease-out;
+    stroke-linecap: round;
+}
+
+.score-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.developers {
+    background: rgba(139, 123, 217, 0.916);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.names {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.dev-irshad {
+    color: #d7fc06;
+}
+
+/* Pink */
+.dev-ajay {
+    color: #2a0589;
+}
+
+/* Green */
+.dev-sunil {
+    color: #0984e3;
+}
+
+/* Blue */
+
+.result-container h2 {
+    color: #6c5ce7;
+    /* Purple */
+    margin-bottom: 10px;
+}
+
+p {
+    color: #3d0ae6;
+}
